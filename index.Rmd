@@ -29,10 +29,10 @@ Hopefully you all had a chance to read the paper that accompanies this workshop 
 
 Ecological data is notoriously complex to analyse and interpret, mainly because there are so many variables that need to be accounted for and patterns change in both space and time. This workshop will;
 
-* Give you practice in tidying up and wrangling messy, real, ecological data set
+* Give you practice in tidying up and wrangling a messy, real, ecological data set
 * Help you develop data exploration and plotting skills
 * Allow you to practice your R coding skills
-* Get you thinking about how best to interpret ecological data
+* Get you thinking about how best to make sense of and interpret ecological data
 
 > Disclaimer - This workshop assumes prior introduction and use of posit Cloud as a platform for using RStudio. 
 
