@@ -1,0 +1,80 @@
+--- 
+title: "Exploring Ecological Data"
+author: "Dr Ellen Bell"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "A short introduction to exploring and analysing some ecological data"
+always_allow_html: true
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+# Background
+
+Today we will be using the `and_vertebrates` data set from the lterdatasampler package. This data set is based on a real longitudinal dataset collected from populations of West Slope cutthroat trout (*Onchorhyncus clarki clarki*, monitored since 1987) and Pacific Giant Salamander (*Dicamptodon tenebrosus*, monitored since 1993) from two reaches of Mack Creek in the H.J. Andrews Experimental Forest, Oregon, USA. The two reaches are in a section of clearcut forest (ca. 1963) and an upstream 500 year old coniferous forest. Sampling was performed with 2-pass electrofishing and all captured vertebrates were measured and weighed. Additional classifications of immediate habitat type were also recorded. 
+
+Hopefully you all had a chance to read the paper that accompanies this workshop [here](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1002/ecs2.1845). What did you think of it?
+
+> Note down some of your observations, interpretations or thoughts, we will have a class discussion around these in the last 20 minutes of the workshop.
+
+## Learning objectives 
+
+Ecological data is notoriously complex to analyse and interpret, mainly because there are so many variables that need to be accounted for and patterns change in both space and time. This workshop will;
+
+* Give you practice in tidying up and wrangling messy, real, ecological data set
+* Help you develop data exploration and plotting skills
+* Allow you to practice your R coding skills
+* Get you thinking about how best to interpret ecological data
+
+> Disclaimer - This workshop assumes prior introduction and use of posit Cloud as a platform for using RStudio. 
+
+## The data format
+
+
+This data set is formatted as a tibble with 32,209 rows and 16 variables:
+
+* year - a number indicating the observation year
+* sitecode - a character denoting the coded name of sample area
+* section - a character denoting the section in Mack Creek (CC = clear cut forest, OG = upstream old growth coniferous forest)
+* reach - a character denoting the reach sampled from each section; L = lower reach (0 - 50 meters), M = middle reach (50 - 100 meters), U = upper reach (100 - 150 meters))
+* pass - a number denoting the electroshocking pass number, either 1 or 2
+* unitnum - a number denoting the channel unit number
+* unittype - a character denoting the channel unit classification type (C = cascade, I = riffle, IP = isolated pool (not connected to channel), P = pool, R = rapid, S = step (small falls), SC = side channel, NA = not sampled by unit)
+* vert_index - a number denoting the unique index for each vertebrate
+* pitnumber - a number denoting the unique tag number embedded into vertebrate (tagging started in 2007)
+* species - a character denoting species measured
+* length_1_mm - a number denoting vertebrate length in millimeters; total or snout-fork length for trout, and snout-vent length for salamanders
+* length_2_mm - a number denoting snout-tail length in millimeters (for Coastal giant salamander only)
+* weight_g - a number denoting vertebrate mass in grams
+* clip - a character denoting the fin clip type for cutthroat trout, ended in 2006 (LV = left ventrical fin; LVRV = left and right ventrical fins; RV = right ventrical fin; NONE = no ventral fin clip)
+* sampledate - a date denoting the date of observation
+* notes - a character denoting additional comments
+
+## Setting up your project
+
+We will be working on a new data set, generally I recommend starting a new R Project every time you start working on new and unrelated data sets. Go to posit Cloud, open a **New R Studio Project** and name it `mack_creek`. Spend a few minutes setting up your work space. Remember you will need to create sensible places to save scripts, data and figures. You will also need to freshly install any required packages. 
+
+For this workshop you will need to install the following packages:
+
+* tidyverse
+* lterdatasampler
+
+### Script set up
+
+Its fairly safe to say we will be creating some new scripts, so open a new **R script** and set it up with a sensible title, your name and date, commented out. Remember to use `library()` to load your freshly installed packages. You then use the following line to load our dataset;
+
+```{r}
+vertebrates <- and_vertebrates
+```
+
+
+
+

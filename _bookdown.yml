@@ -1,0 +1,6 @@
+book_filename: "exploring_ecological_data"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+output_dir: "docs"

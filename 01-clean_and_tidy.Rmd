@@ -1,0 +1,110 @@
+# Checking the data
+
+Once you have imported and loaded your `vertebrates` dataset into your new R project you will need to spend a few minutes checking it over to make sure that R has correctly identified and formatted your variables. 
+
+## Make sure your data have imported correctly and are easy to manipulate
+
+1)  First of all make sure your data have imported correctly, do you have the expected numbers of rows and columns? 
+
+> Hint - consider using functions such as ```ncol(), nrow(), colnames()``` to check this.
+
+2)  Then check that R has correctly identified the data types for each variable. Do you need to adjust any variables to factors? 
+
+> Hint - consider using functions such as ```glimpse()``` to check.
+
+3)  Now you can check your variable names, are they nice and concise, do you want to change them? 
+
+> Hint - you can use the ```rename()``` function to change variable names if you wish to.
+
+## Checking for errors 
+
+Now we know our that R has read our data correctly and we have all of our variables named as we would like we can run a few further checks. Frequently you will find that your data have originally been manually entered into a spreadsheet, maybe from hand drafted notes in a field or lab notebook. Every time something is copied there is the opportunity for error. Maybe a row has been accidentally duplicated, or there is a typo or maybe some data is missed out altogether. There are a few tricks we can use to check for each of these and to make sure we are confident in the fidelity of our dataset. 
+
+1) Checking for duplicates - When you are manually entering data into a spreadsheet, it is very easy to accidentally enter the same row twice. With very large data sets this is something that is very hard to pick out by eye. Thankfully R has some very useful functions to check for this. Try running;
+
+```{r}
+vertebrates %>%
+  duplicated() # check for duplicated rows
+```
+> Note that %>% used here is just another notation for piping, rather like the + that ggplot uses. This means that the output from one function is fed directly into the next function.
+
+This chunk of code will spit out a long list of TRUE (row is duplicated) or FALSE (row is not duplicated) statements. Again not very human readable, especially if we have a very large data set. Try amending the code to;
+
+```{r}
+vertebrates %>%
+  duplicated() %>% # check for duplicated rows
+  sum() # Sums any TRUE statements in the list 
+```
+
+Do we have any duplicated rows?
+
+2)  Checking for typos - As with duplicates it is very easy to enter a typo when manually entering data into a spreadsheet. Generally if you have been collecting continuous data you will have an idea of what a sensible upper and lower bound within your data set should be. We can use the `summarise()` function to see what these are within this data set, as shown below;
+
+```{r}
+vertebrates %>% 
+  group_by(species) %>% 
+  summarise(min=min(length_1_mm, na.rm=TRUE), # reports the minimum value in the length_1_mm variable and ignores cells with N/A
+            max=max(length_1_mm, na.rm=TRUE)) # reports the maximum value in the length_1_mm variable and ignores cells with N/A
+```
+
+Try manipulating the above chunk to report the upper and lower bounds for the weight variable in your data set. Do these values all look reasonable to you?
+
+But how can we check for typos in categorical data? We can use the `distinct()` function to identify all of the options stored under a categorical variable name. Try using the following chunk;
+
+```{r}
+vertebrates %>% 
+  distinct(species) # reports the categories stored under species
+```
+
+So do you think there are any potential typos in your data set? Are there any further categorical variables you may wish to check?
+
+3)  Checking for missing data - finally sometimes when entering data manually, you may miss or delete a spreadsheet cell by mistake, leaving it empty. Again this is really difficult to spot by eye in a large data set. Try running the following chunk of code, can you work out what each line does? Try adding comments to it in your script yourself.
+
+```{r}
+vertebrates %>% 
+  is.na() %>% 
+  sum()
+```
+
+<details><summary> **Click-me to check your code interpretation** </summary>
+
+So here you are piping your initial data set `vertebrates` into the `is.na()` function which is then looking for cells containing N/A and reporting a TRUE/FALSE data frame (where TRUE indicates N/A). We are then piping that output straight into the `sum()` function which is summing the number of TRUE values.
+
+</details>
+<br />
+Do we have any missing data? Do you think its reasonable that there may be some missing data? You can investigate individual variables using;
+
+```{r}
+sum(is.na(vertebrates$species))
+```
+
+## Tidying up
+
+So from the previous exercises that the data set contains four categories in the `species` variable; two species of salamander, one species of trout and some NA's. It would be good to know what the representation is of each of these groups in this data set.
+
+Try running the following;
+
+```{r}
+vertebrates %>%
+  group_by(species) %>%
+  count()
+```
+
+What do you think this piece of code has done? From this information, do you think it may be worth removing some categories from the data set?
+
+<details><summary> **Click-me to check your analysis** </summary>
+
+We can see that three species in this data set and a category that are unidentified (NA). The Cascade torrent salamander has only 15 data entries and 3 entries have an unknown species (NA), compared to thousands of entries for the other species. It therefore makes good analytical sense to remove those entries. Try using the following to filter them out, for now.  
+
+```{r}
+vertebrates <- vertebrates %>% 
+  filter(species != "Cascade torrent salamander") %>% 
+  filter(species != "NA")
+```
+You can check this worked by running the last piece of code again.
+</details>
+<br />
+
+Now we are ready to start exploring the data set from an ecological point of view.
+
+

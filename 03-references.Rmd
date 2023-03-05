@@ -1,0 +1,8 @@
+# References
+
+Gregory, S.V. and Arismendi, I. (2020). Aquatic Vertebrate Population Study in Mack Creek, Andrews Experimental Forest, 1987 to present ver 14. Environmental Data Initiative. https://doi.org/10.6073/pasta/7c78d662e847cdbe33584add8f809165 <br />
+Horst A., Brun J. (2023). lterdatasampler: Educational dataset examples from the Long Term Ecological Research program. R package version 0.1.1, https://github.com/lter/lterdatasampler. <br />
+Kaylor. M. and Warren, D. (2017) Linking riparian shade and the legacies of forest management to fish and vertebrate biomass in forested streams. Ecosphere, 8(6), e01845.  https://doi.org/10.1002/ecs2.1845 <br />
+Wickham, H., Averick, M., Bryan, j., Chang, W., D’Agostino McGowan , L., François, R., Grolemund, G. (2019). “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686. <br />
+
+

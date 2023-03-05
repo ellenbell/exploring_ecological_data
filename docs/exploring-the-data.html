@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Exploring the data | Exploring Ecological Data</title>
+  <meta name="description" content="A short introduction to exploring and analysing some ecological data" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Exploring the data | Exploring Ecological Data" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="A short introduction to exploring and analysing some ecological data" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Exploring the data | Exploring Ecological Data" />
+  
+  <meta name="twitter:description" content="A short introduction to exploring and analysing some ecological data" />
+  
+
+<meta name="author" content="Dr Ellen Bell" />
+
+
+<meta name="date" content="2023-03-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="checking-the-data.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Exploring Ecological Data</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Background</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>1.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#the-data-format"><i class="fa fa-check"></i><b>1.2</b> The data format</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#setting-up-your-project"><i class="fa fa-check"></i><b>1.3</b> Setting up your project</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#script-set-up"><i class="fa fa-check"></i><b>1.3.1</b> Script set up</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="checking-the-data.html"><a href="checking-the-data.html"><i class="fa fa-check"></i><b>2</b> Checking the data</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="checking-the-data.html"><a href="checking-the-data.html#make-sure-your-data-have-imported-correctly-and-are-easy-to-manipulate"><i class="fa fa-check"></i><b>2.1</b> Make sure your data have imported correctly and are easy to manipulate</a></li>
+<li class="chapter" data-level="2.2" data-path="checking-the-data.html"><a href="checking-the-data.html#checking-for-errors"><i class="fa fa-check"></i><b>2.2</b> Checking for errors</a></li>
+<li class="chapter" data-level="2.3" data-path="checking-the-data.html"><a href="checking-the-data.html#tidying-up"><i class="fa fa-check"></i><b>2.3</b> Tidying up</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="exploring-the-data.html"><a href="exploring-the-data.html"><i class="fa fa-check"></i><b>3</b> Exploring the data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="exploring-the-data.html"><a href="exploring-the-data.html#plotting-abundance-through-time-and-space"><i class="fa fa-check"></i><b>3.1</b> Plotting abundance through time and space</a></li>
+<li class="chapter" data-level="3.2" data-path="exploring-the-data.html"><a href="exploring-the-data.html#comparing-habitat-and-land-management-strategy-impacts-on-abundance"><i class="fa fa-check"></i><b>3.2</b> Comparing habitat and land management strategy impacts on abundance</a></li>
+<li class="chapter" data-level="3.3" data-path="exploring-the-data.html"><a href="exploring-the-data.html#bonus-challenge"><i class="fa fa-check"></i><b>3.3</b> Bonus Challenge</a></li>
+<li class="chapter" data-level="3.4" data-path="exploring-the-data.html"><a href="exploring-the-data.html#discussion"><i class="fa fa-check"></i><b>3.4</b> Discussion</a></li>
+<li class="chapter" data-level="3.5" data-path="exploring-the-data.html"><a href="exploring-the-data.html#before-you-leave"><i class="fa fa-check"></i><b>3.5</b> Before you leave</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>4</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Exploring Ecological Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exploring-the-data" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Exploring the data<a href="exploring-the-data.html#exploring-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>We are interested in exploring the potential impact of different land management strategies and habitats on abundance and biomass of cutthroat trout and coastal giant salamander.</p>
+<div id="plotting-abundance-through-time-and-space" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Plotting abundance through time and space<a href="exploring-the-data.html#plotting-abundance-through-time-and-space" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To begin with it would be good to know how abundance of both species has changed through time.</p>
+<p>Use glimpse() to look at your data set once more. If we wanted to look at abundance how might we go about it?</p>
+<blockquote>
+<p>Hint - we can use the function count() to derive abundances.</p>
+</blockquote>
+<details>
+<summary>
+<strong>Click-me to check your analysis</strong>
+</summary>
+<p>This data set contains a lot of individual information, which is great and we will come back to that later. But we want to be able to look at species abundance to start with so we will need to do a little bit of data wrangling. Try running the following on your data set;</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="exploring-the-data.html#cb10-1" aria-hidden="true" tabindex="-1"></a>vert_counts <span class="ot">&lt;-</span> vertebrates <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="exploring-the-data.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(year, species, section, reach, unittype) </span></code></pre></div>
+<p>Use glimpse() to look at your new data frame, do you understand what has been calculated? use the <code>#</code> to comment on your new piece of code.</p>
+</details>
+<p><br /></p>
+<p>Now that we have some abundance data lets have a look at how these have changed through time. Run the following piece of code;</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="exploring-the-data.html#cb11-1" aria-hidden="true" tabindex="-1"></a>vert_counts <span class="sc">%&gt;%</span> <span class="co"># Pipe vert_counts into ggplot</span></span>
+<span id="cb11-2"><a href="exploring-the-data.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> n)) <span class="sc">+</span> <span class="co"># Plot year against abundance (n)</span></span>
+<span id="cb11-3"><a href="exploring-the-data.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co"># Produce a scatter plot</span></span>
+<span id="cb11-4"><a href="exploring-the-data.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="co"># Set the theme to a basic black and white theme </span></span>
+<span id="cb11-5"><a href="exploring-the-data.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(section<span class="sc">~</span>species) <span class="co"># produce a separate plot for different sections and species, sections by row, species by collumn</span></span></code></pre></div>
+<p>Look at what you have produced, is it very meaningful? There is some information in these plots about the land management for each reach of creek but no further spatial information has been included, each reach is 150 meters long and contains several different habitat types. We may have clumped too much data into these figures. But we can separate this out a little further, try this;</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="exploring-the-data.html#cb12-1" aria-hidden="true" tabindex="-1"></a>vert_counts <span class="sc">%&gt;%</span> <span class="co"># Pipe vert_counts into ggplot</span></span>
+<span id="cb12-2"><a href="exploring-the-data.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> n, <span class="at">colour =</span> reach)) <span class="sc">+</span> <span class="co"># Plot year against abundance (n), colour by reach</span></span>
+<span id="cb12-3"><a href="exploring-the-data.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co"># Produce a scatter plot</span></span>
+<span id="cb12-4"><a href="exploring-the-data.html#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="co"># Set the theme to a basic black and white theme </span></span>
+<span id="cb12-5"><a href="exploring-the-data.html#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(section<span class="sc">~</span>species) <span class="co"># produce a separate plot for different sections and species, sections by row, species by collumn</span></span></code></pre></div>
+<p>Now we have added a little more resolution to our figures by splitting the data into 50 meter sections, but do we think it might be more informative to have habitat information presented instead of which reach division the abundance data were collected from? See if you can manipulate the last chunk of code to produce the following figure (Figure 3.1).</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-13"></span>
+<img src="figures/Screenshot%202023-03-05%20at%2011.09.31.png" alt="Abundance by year, coloured by habitat" width="90%" />
+<p class="caption">
+Figure 3.1: Abundance by year, coloured by habitat
+</p>
+</div>
+<p>This analytical process might have given us some idea of the abundances across year, reach and habitat type but its still pretty tricky to pull out much of a pattern from these data. So we need to do some more data wrangling to produce a plot that is more meaningful and easier to interpret. Look again at your plots, do you think that there are multiple data points per year and unittype? Could these be summarised more effectively by some measures of central tenancy and spread?</p>
+<p>Try running the following to make a summary tibble;</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="exploring-the-data.html#cb13-1" aria-hidden="true" tabindex="-1"></a>summary <span class="ot">&lt;-</span> vert_counts <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="exploring-the-data.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, species, section, unittype) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="exploring-the-data.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">mean</span>(n),</span>
+<span id="cb13-4"><a href="exploring-the-data.html#cb13-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd=</span><span class="fu">sd</span>(n),</span>
+<span id="cb13-5"><a href="exploring-the-data.html#cb13-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">n=</span><span class="fu">n</span>())</span>
+<span id="cb13-6"><a href="exploring-the-data.html#cb13-6" aria-hidden="true" tabindex="-1"></a>summary</span></code></pre></div>
+<p>Have a look at the tibble produced, do you understand what each line of the above code has done? Try adding comments <code>#</code> to your code.</p>
+<p>It would also be useful to know the standard error of the mean as well. We can use the <code>mutate</code> function to add additional columns onto our summary stats table. Remember we can calculate the standard error of the mean using;</p>
+<p><span class="math display">\[
+SEM = \frac{SD}{\sqrt{n}}
+\]</span>
+Add the following line of code to the end of the previous chunk, don’t forget to include the piping syntax <code>&gt;%&gt;</code>;</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="exploring-the-data.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">sem =</span> sd<span class="sc">/</span><span class="fu">sqrt</span>(n))</span></code></pre></div>
+<p>Your summary tibble should now look like this (note that this is just an exert, yours will be larger);</p>
+<pre><code>&gt; summary
+# A tibble: 386 × 8
+# Groups:   year, species, section [120]
+    year species         section unittype  mean    sd     n   sem
+   &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+ 1  1987 Cutthroat trout CC      C         55    8.19     3  4.73
+ 2  1987 Cutthroat trout CC      P         21.3 18.1      3 10.5 
+ 3  1987 Cutthroat trout CC      R         48.5 37.5      2 26.5 
+ 4  1987 Cutthroat trout CC      S          2   NA        1  NA   
+ 5  1987 Cutthroat trout CC      SC        28    2.83     2  2   
+ 6  1987 Cutthroat trout OG      C         41.3 11.6      3  6.69
+ 7  1987 Cutthroat trout OG      I         11.5  6.36     2  4.5 
+</code></pre>
+<p>You might notice that there are some <code>NA</code> values stored here. This is because where there is only one data value per category combination (e.g. 1987, Cutthroat trout, CC, S) we cant calculate a standard deviation or a standard error of the mean. We don’t want these <code>NA</code> values to cause future errors so we are just going to replace them with <code>0</code>. Add the this line to your last chunk (remember to pipe).</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="exploring-the-data.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">sem =</span> <span class="fu">replace_na</span>(sem, <span class="dv">0</span>))</span></code></pre></div>
+<p>Now we can use this</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="exploring-the-data.html#cb17-1" aria-hidden="true" tabindex="-1"></a>summary <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="exploring-the-data.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> mean, <span class="at">colour =</span> unittype)) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="exploring-the-data.html#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb17-4"><a href="exploring-the-data.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymax =</span> mean<span class="sc">+</span>sem, <span class="at">ymin =</span> mean<span class="sc">-</span>sem)) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="exploring-the-data.html#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb17-6"><a href="exploring-the-data.html#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(section<span class="sc">~</span>species)</span></code></pre></div>
+<p>To produce plots that look like this;</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-18"></span>
+<img src="figures/Screenshot%202023-03-05%20at%2012.12.37.png" alt="Mean abundance by year, coloured by habitat" width="90%" />
+<p class="caption">
+Figure 3.2: Mean abundance by year, coloured by habitat
+</p>
+</div>
+<p>Once again make sure you understand what each line of code has done, try adding comments <code>#</code> to the script. Spend some time looking at these plots, what do they tell you? Remember that you have plotted mean and standard error for abundance across year, habitat, land management strategy and two species here, which gives you multiple questions you could ask of the data. It may be of interest to know that Mack Creek flooded in 1996. What impact (if any) did this have on our abundances? Remember to look at the variation in the data, don’t just focus on the mean.</p>
+<blockquote>
+<p>Note down some of your observations, interpretations or thoughts, we will have a class discussion around these in the last 20 minutes of the workshop.</p>
+</blockquote>
+</div>
+<div id="comparing-habitat-and-land-management-strategy-impacts-on-abundance" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Comparing habitat and land management strategy impacts on abundance<a href="exploring-the-data.html#comparing-habitat-and-land-management-strategy-impacts-on-abundance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We may wish to directly compare abundances between habitat and land management strategy (removing time as a variable). How do you think you might go about this? See if you can manipulate some of the above scripts to produce an appropriate plot;</p>
+<blockquote>
+<p>Hint - I would use geom_boxplot</p>
+</blockquote>
+<p>What do these new plots tell you about differences in abundance in either trout or salamander species between different habitats/land management strategy?</p>
+<blockquote>
+<p>Note down some of your observations, interpretations or thoughts, we will have a class discussion around these in the last 20 minutes of the workshop.</p>
+</blockquote>
+</div>
+<div id="bonus-challenge" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Bonus Challenge<a href="exploring-the-data.html#bonus-challenge" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Our original data set also contained data on salamander and trout standard length and weight. Have a go at exploring these data, do you think habitat or land management has any impact on the biomass of trout or salamanders? Think about the most appropriate plots you could produce to explore these questions.</p>
+<blockquote>
+<p>Note down some of your observations, interpretations or thoughts, we will have a class discussion around these in the last 20 minutes of the workshop.</p>
+</blockquote>
+</div>
+<div id="discussion" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Discussion<a href="exploring-the-data.html#discussion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The last 20 minutes of this session will be used for a class discussion around the observations you have made from the plots produced. Think about any major patterns that have emerged, can you link these patterns back to any one single variable?</p>
+</div>
+<div id="before-you-leave" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Before you leave<a href="exploring-the-data.html#before-you-leave" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Please log out of posit Cloud before you leave and make sure you save your script, we will come back to it in future workshops.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="checking-the-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-exploration.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["exploring_ecological_data.pdf", "exploring_ecological_data.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
