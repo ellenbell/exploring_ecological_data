@@ -23,7 +23,7 @@ Today we will be using the `and_vertebrates` data set from the lterdatasampler p
 
 Hopefully you all had a chance to read the paper that accompanies this workshop [here](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1002/ecs2.1845). What did you think of it?
 
-> Note down some of your observations, interpretations or thoughts, we will have a class discussion around these in the last 20 minutes of the workshop.
+**Note down some of your observations, interpretations or thoughts, we will have a class discussion around these in the last 20 minutes of the workshop**
 
 ## Learning objectives 
 
